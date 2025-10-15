@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité - UPStudent Université de Parakou</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --up-color: #8e44ad;
+            --menu-color: #FFD700;
+            --menu-hover: #FFC400;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--up-color), var(--secondary-color));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        /* Content */
+        .privacy-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        .privacy-header h1 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .last-updated {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: var(--up-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--light-color);
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .section li {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .contact-info {
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* University Banner */
+        .university-banner {
+            background-color: var(--up-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 500;
+        }
+        
+        /* Back to Home */
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .back-home:hover {
+            color: var(--up-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .privacy-content {
+                padding: 20px;
+            }
+            
+            .privacy-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- University Banner -->
+    <div class="university-banner">
+        Portail officiel des étudiants de l'Université de Parakou
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>UP<span>Student</span></h1>
+            </div>
+            <div style="color: white; font-weight: 500;">Politique de Confidentialité</div>
+        </div>
+    </header>
+
+    <!-- Privacy Policy Content -->
+    <div class="container">
+        <div class="privacy-content">
+            <div class="privacy-header">
+                <h1>Politique de Confidentialité</h1>
+                <p class="last-updated">Dernière mise à jour : 1er Novembre 2023</p>
+            </div>
+
+            <div class="section">
+                <h2>1. Introduction</h2>
+                <p>UPStudent ("nous", "notre", "nos") respecte votre vie privée et s'engage à protéger vos données. Cette politique de confidentialité explique comment nous gérons les informations lorsque vous utilisez notre site web UPStudent (le "Service").</p>
+                <div class="highlight">
+                    <p><strong>Important :</strong> UPStudent est un site d'information publique. Nous ne collectons PAS de données personnelles via des formulaires d'inscription ou de connexion. Aucune création de compte n'est nécessaire pour accéder à nos services.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>2. Informations que nous collectons</h2>
+                <p>UPStudent étant un site purement informatif sans système d'authentification, nous ne collectons pas de données personnelles identifiables.</p>
+                
+                <h3>2.1. Absence de collecte de données personnelles</h3>
+                <p>Contrairement à de nombreux sites web, UPStudent ne requiert ni n'enregistre :</p>
+                <ul>
+                    <li>Noms et prénoms</li>
+                    <li>Adresses e-mail</li>
+                    <li>Numéros de téléphone</li>
+                    <li>Numéros d'étudiant</li>
+                    <li>Informations de connexion (identifiants/mots de passe)</li>
+                </ul>
+                
+                <h3>2.2. Statistiques d'utilisation anonymes</h3>
+                <p>Nous utilisons des outils d'analyse simples pour comprendre comment notre Service est utilisé. Ces données sont entièrement anonymisées et ne permettent pas de vous identifier personnellement.</p>
+                <div class="highlight">
+                    <p><strong>Note importante :</strong> Nous ne suivons PAS les adresses IP individuelles, les types de navigateur spécifiques, ni aucune autre information permettant l'identification des visiteurs.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>3. Utilisation des données</h2>
+                <p>Les données anonymisées que nous recueillons servent exclusivement à :</p>
+                <ul>
+                    <li>Améliorer le contenu et l'organisation de notre Service</li>
+                    <li>Comprendre quelles sections du site sont les plus consultées</li>
+                    <li>Optimiser l'expérience utilisateur globale</li>
+                    <li>Détecter et résoudre les problèmes techniques</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>4. Partage des données</h2>
+                <p>UPStudent ne partage aucune donnée personnelle avec des tiers, car nous n'en collectons pas.</p>
+                
+                <h3>4.1. Services externes</h3>
+                <p>Nous utilisons certains services externes pour :</p>
+                <ul>
+                    <li>Hébergement du site web</li>
+                    <li>Analyse d'audience anonyme</li>
+                </ul>
+                <p>Ces prestataires sont soumis à leurs propres politiques de confidentialité et n'ont pas accès à des données personnelles via notre site.</p>
+                
+                <h3>4.2. Section Jobs/Offres d'emploi</h3>
+                <p>La section "Jobs" de notre site affiche des offres d'emploi et de stage. Ces offres sont fournies par des organisations externes. Lorsque vous cliquez sur ces offres, vous êtes redirigé vers les sites des recruteurs qui ont leurs propres politiques de confidentialité.</p>
+                <div class="highlight">
+                    <p><strong>Attention :</strong> UPStudent n'est pas responsable des pratiques de confidentialité des sites externes vers lesquels nous redirigeons pour les offres d'emploi.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. Cookies et technologies similaires</h2>
+                <p>Nous utilisons un nombre minimal de cookies pour le bon fonctionnement de base du site :</p>
+                <ul>
+                    <li>Cookies de session nécessaires à la navigation</li>
+                    <li>Cookies de préférences (comme le choix de langue)</li>
+                </ul>
+                <p>Nous n'utilisons pas de cookies de suivi ou de publicité. Vous pouvez configurer votre navigateur pour refuser les cookies, mais certaines fonctionnalités du site pourraient ne pas fonctionner correctement.</p>
+            </div>
+
+            <div class="section">
+                <h2>6. Sécurité</h2>
+                <p>Bien que nous ne collections pas de données personnelles, nous mettons en œuvre des mesures de sécurité appropriées pour protéger l'intégrité de notre site et prévenir tout accès non autorisé.</p>
+                <p>Notre site utilise le protocole HTTPS pour chiffrer les communications entre votre navigateur et nos serveurs.</p>
+            </div>
+
+            <div class="section">
+                <h2>7. Liens vers d'autres sites</h2>
+                <p>Notre Service contient des liens vers :</p>
+                <ul>
+                    <li>Sites des organisations offrant des bourses</li>
+                    <li>Plateformes de recrutement pour les offres d'emploi</li>
+                    <li>Sites institutionnels de l'Université de Parakou</li>
+                    <li>Autres ressources éducatives</li>
+                </ul>
+                <p>Nous vous conseillons de consulter la politique de confidentialité de chaque site que vous visitez. UPStudent n'a aucun contrôle sur et n'assume aucune responsabilité quant au contenu, aux politiques de confidentialité ou aux pratiques des sites ou services tiers.</p>
+            </div>
+
+            <div class="section">
+                <h2>8. Contenu généré par les utilisateurs</h2>
+                <p>UPStudent étant un site d'information unidirectionnel, nous n'hébergeons pas :</p>
+                <ul>
+                    <li>Forums de discussion</li>
+                    <li>Commentaires d'articles</li>
+                    <li>Profils utilisateurs</li>
+                    <li>Publications sociales</li>
+                </ul>
+                <p>Tout le contenu est publié et géré par l'équipe UPStudent.</p>
+            </div>
+
+            <div class="section">
+                <h2>9. Modifications de cette politique</h2>
+                <p>Nous pouvons mettre à jour cette politique de confidentialité occasionnellement. Toute modification sera publiée sur cette page avec la date de mise à jour révisée.</p>
+                <p>Nous vous encourageons à consulter cette politique périodiquement pour rester informé de la façon dont nous protégeons vos informations.</p>
+            </div>
+
+            <div class="section">
+                <h2>10. Nous contacter</h2>
+                <p>Si vous avez des questions concernant cette politique de confidentialité, vous pouvez nous contacter :</p>
+                
+                <div class="contact-info">
+                    <p><strong>UPStudent - Université de Parakou</strong></p>
+                    <p><i class="fas fa-envelope"></i> Email : contact@upstudent-up.com</p>
+                    <p><i class="fas fa-phone"></i> Téléphone : +229 XX XX XX XX</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Adresse : Université de Parakou, Bénin</p>
+                </div>
+                
+                <p>Pour toute question relative aux offres d'emploi affichées dans la section "Jobs", veuillez contacter directement les organisations recruteuses.</p>
+            </div>
+
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>UPStudent</h3>
+                    <p>Portail officiel des ressources académiques de l'Université de Parakou.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="bourses.html">Bourses</a></li>
+                        <li><a href="jobs.html">Jobs</a></li>
+                        <li><a href="cours.html">Cours</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ressources</h3>
+                    <ul>
+                        <li><a href="aide.html">Centre d'aide</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="conditions.html">Conditions d'utilisation</a></li>
+                        <li><a href="privacy.html">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@upstudent-up.com</li>
+                        <li><i class="fas fa-phone"></i> +229 XX XX XX XX</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Université de Parakou, Bénin</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 UPStudent - Université de Parakou. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPStudent - Université de Parakou</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --up-color: #8e44ad;
+            --menu-color: #FFD700;
+            --menu-hover: #FFC400;
+            --whatsapp-color: #25D366;
+            --jobs-color: #9b59b6;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--up-color), var(--secondary-color));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        nav ul li a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s;
+            padding: 10px 15px;
+            border-radius: 6px;
+            background-color: var(--menu-color);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+            display: inline-block;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--menu-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .welcome-message {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 800;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-weight: 500;
+        }
+        
+        .how-it-works-btn {
+            background: linear-gradient(45deg, var(--up-color), var(--primary-color));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .how-it-works-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, var(--primary-color), var(--up-color));
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        /* Jobs Section */
+        .jobs {
+            padding: 60px 0;
+            background-color: #f5f7fa;
+        }
+        
+        .jobs-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .jobs-content p {
+            margin-bottom: 30px;
+        }
+        
+        .visit-jobs {
+            background-color: var(--jobs-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .visit-jobs:hover {
+            background-color: #8e44ad;
+        }
+        
+        /* Scholarships Section */
+        .scholarships {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .scholarships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .scholarship-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .scholarship-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .scholarship-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .scholarship-country {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .scholarship-deadline {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .scholarship-content {
+            padding: 20px;
+        }
+        
+        .scholarship-content h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .scholarship-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .scholarship-alert {
+            background-color: #fff4e5;
+            border-left: 4px solid #ffa726;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+            border-radius: 4px;
+        }
+        
+        .scholarship-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .scholarship-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-align: center;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-criteria {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-criteria:hover {
+            background-color: #1e2a36;
+        }
+        
+        .btn-apply-self {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-apply-self:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-apply-us {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-apply-us:hover {
+            background-color: #27ae60;
+        }
+        
+        /* Results Section */
+        .results {
+            padding: 60px 0;
+            background-color: #f5f7fa;
+        }
+        
+        .results-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .results-content p {
+            margin-bottom: 30px;
+        }
+        
+        .check-results {
+            background-color: var(--success-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .check-results:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-content h2 {
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-content p {
+            margin-bottom: 30px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* University Banner */
+        .university-banner {
+            background-color: var(--up-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 500;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        /* WhatsApp Popup */
+        .whatsapp-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .whatsapp-popup-content {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s ease;
+            position: relative;
+        }
+        
+        .popup-header {
+            background: linear-gradient(to right, var(--whatsapp-color), #128C7E);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .popup-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .popup-body {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .popup-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background-color: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--whatsapp-color);
+            border: 4px solid var(--whatsapp-color);
+        }
+        
+        .popup-body p {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .popup-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .popup-btn {
+            padding: 14px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 180px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .btn-subscribe {
+            background-color: var(--whatsapp-color);
+            color: white;
+            border: 2px solid var(--whatsapp-color);
+        }
+        
+        .btn-subscribe:hover {
+            background-color: #128C7E;
+            border-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(18, 140, 126, 0.3);
+        }
+        
+        .btn-already {
+            background-color: transparent;
+            color: var(--up-color);
+            border: 2px solid var(--up-color);
+        }
+        
+        .btn-already:hover {
+            background-color: var(--up-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.3);
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .welcome-message {
+                padding: 25px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 12px;
+            }
+            
+            .scholarship-buttons {
+                flex-direction: column;
+            }
+            
+            nav ul li a {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+            
+            .popup-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .popup-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .whatsapp-popup-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- University Banner -->
+    <div class="university-banner">
+        Portail officiel des étudiants de l'Université de Parakou
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>UP<span>Student</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="cours.html">Cours</a></li>
+                    <li><a href="epreuve.html">Épreuves</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="bourses.html">Bourses</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="welcome-message">
+                <h2>BIENVENUE SUR UPSTUDENT</h2>
+                <p>Votre plateforme complète pour réussir votre parcours universitaire à l'Université de Parakou</p>
+                <p>Téléchargez cours, épreuves et corrigés, consultez vos résultats et découvrez les opportunités de bourses et d'emplois</p>
+            </div>
+            <a href="#" class="how-it-works-btn" id="howItWorksBtn">Comment marche le site?</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="features-grid">
+                <div class="feature-card" onclick="location.href='cours.html'">
+                    <div class="feature-icon"><i class="fas fa-book"></i></div>
+                    <h3>Cours à Télécharger</h3>
+                    <p>Accédez à une bibliothèque complète de cours dans diverses disciplines</p>
+                </div>
+                <div class="feature-card" onclick="location.href='epreuve.html'">
+                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Épreuves & Corrections</h3>
+                    <p>Annales d'examens avec corrigés détaillés pour une meilleure préparation</p>
+                </div>
+                <div class="feature-card" onclick="location.href='resultats.html'">
+                    <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Résultats d'Examens</h3>
+                    <p>Consultez les résultats des différents examens en temps réel</p>
+                </div>
+                <div class="feature-card" onclick="location.href='bourses.html'">
+                    <div class="feature-icon"><i class="fas fa-globe-africa"></i></div>
+                    <h3>Bourses Internationales</h3>
+                    <p>Découvrez les opportunités de bourses d'études à l'étranger</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section class="jobs">
+        <div class="container">
+            <div class="jobs-content">
+                <h2 class="section-title">Offres d'Emploi & Stages</h2>
+                <p>Découvrez notre plateforme dédiée aux offres d'emploi, stages et opportunités professionnelles pour les étudiants et diplômés de l'Université de Parakou.</p>
+                <a href="jobs.html" class="visit-jobs">Voir les offres</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scholarships Section -->
+    <section class="scholarships">
+        <div class="container">
+            <h2 class="section-title">Bourses d'Études Disponibles</h2>
+            <div class="scholarships-grid">
+                <div class="scholarship-card">
+                    <div class="scholarship-img" style="background-image: url('bourses/img/saudi.jpg')">
+                        <div class="scholarship-country">Arabie Saoudite</div>
+                        <div class="scholarship-deadline">30 Oct. 2025</div>
+                    </div>
+                    <div class="scholarship-content">
+                        <h3>Bourse 'Etudier en Arabie Saoudite'</h3>
+                        <p>Une bourse complète pour poursuivre des études master et doctorales en Arabie Saoudite dans toutes les disciplines. Couvre les frais de scolarité, le logement et une allocation mensuelle.</p>
+                        <div class="scholarship-alert">
+                            <i class="fas fa-info-circle"></i> Téléchargez et lisez attentivement les critères avant de postuler
+                        </div>
+                        <div class="scholarship-buttons">
+                            <a href="https://example.com/criteres-france.pdf" class="scholarship-btn btn-criteria" download>
+                                <i class="fas fa-download"></i> Critères
+                            </a>
+                            <a href="https://example.com/postuler-france" class="scholarship-btn btn-apply-self">
+                                Postulez vous-même
+                            </a>
+                            <a href="https://example.com/assistance-france" class="scholarship-btn btn-apply-us">
+                                Postulez avec nous
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ajout d'autres bourses -->
+                <div class="scholarship-card">
+                    <div class="scholarship-img" style="background-image: url('bourses/img/france.jpg')">
+                        <div class="scholarship-country">France</div>
+                        <div class="scholarship-deadline">15 Jan. 2025</div>
+                    </div>
+                    <div class="scholarship-content">
+                        <h3>Bourse Eiffel Excellence</h3>
+                        <p>Programme de bourses du gouvernement français pour les étudiants internationaux de master et doctorat.</p>
+                        <div class="scholarship-alert">
+                            <i class="fas fa-info-circle"></i> Date limite approchant - Postulez dès maintenant
+                        </div>
+                        <div class="scholarship-buttons">
+                            <a href="https://example.com/criteres-france.pdf" class="scholarship-btn btn-criteria" download>
+                                <i class="fas fa-download"></i> Critères
+                            </a>
+                            <a href="https://example.com/postuler-france" class="scholarship-btn btn-apply-self">
+                                Postulez vous-même
+                            </a>
+                            <a href="https://example.com/assistance-france" class="scholarship-btn btn-apply-us">
+                                Postulez avec nous
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scholarship-card">
+                    <div class="scholarship-img" style="background-image: url('bourses/img/canada.jpg')">
+                        <div class="scholarship-country">Canada</div>
+                        <div class="scholarship-deadline">28 Fév. 2025</div>
+                    </div>
+                    <div class="scholarship-content">
+                        <h3>Bourses d'études au Canada</h3>
+                        <p>Opportunités de bourses pour études universitaires au Canada dans divers domaines d'études.</p>
+                        <div class="scholarship-alert">
+                            <i class="fas fa-info-circle"></i> Exigences linguistiques: IELTS 6.5 ou équivalent
+                        </div>
+                        <div class="scholarship-buttons">
+                            <a href="https://example.com/criteres-canada.pdf" class="scholarship-btn btn-criteria" download>
+                                <i class="fas fa-download"></i> Critères
+                            </a>
+                            <a href="https://example.com/postuler-canada" class="scholarship-btn btn-apply-self">
+                                Postulez vous-même
+                            </a>
+                            <a href="https://example.com/assistance-canada" class="scholarship-btn btn-apply-us">
+                                Postulez avec nous
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <div class="results-content">
+                <h2 class="section-title">Résultats d'Examens</h2>
+                <p>Consultez les résultats des derniers examens publiés. Entrez votre numéro d'étudiant pour accéder à vos résultats personnels.</p>
+                <a href="resultats.html" class="check-results">Vérifier mes résultats</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Restez Informé</h2>
+                <p>Inscrivez-vous à notre newsletter pour recevoir les dernières actualités sur les nouveaux cours, les résultats, les opportunités de bourses et d'emplois.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre adresse email" required>
+                    <button type="submit">S'abonner</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>UPStudent</h3>
+                    <p>Portail officiel des ressources académiques de l'Université de Parakou.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="cours.html">Cours</a></li>
+                        <li><a href="epreuve.html">Épreuves</a></li>
+                        <li><a href="resultats.html">Résultats</a></li>
+                        <li><a href="bourses.html">Bourses</a></li>
+                        <li><a href="jobs.html">Jobs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ressources</h3>
+                    <ul>
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="privacy.html">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@upstudent-up.com</li>
+                        <li><i class="fas fa-phone"></i> +229 65 65 58 10</li>
+                        <li><i class="fas fa-map-marker-alt"></i> UPStudent, Bénin</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 UPStudent - Ibnhoud. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal How it works -->
+    <div class="modal" id="howItWorksModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2>Comment fonctionne UPStudent?</h2>
+            <div style="margin: 20px 0;">
+                <h3>1. Téléchargement de ressources</h3>
+                <p>Accédez à nos ressources en sélectionnant la catégorie désirée dans le menu principal.</p>
+                
+                <h3>2. Consultation des résultats</h3>
+                <p>Rendez-vous dans la section Résultats pour consulter vos notes.</p>
+                
+                <h3>3. Recherche de bourses</h3>
+                <p>Parcourez les bourses disponibles, téléchargez les critères et postulez en suivant les instructions.</p>
+                
+                <h3>4. Opportunités professionnelles</h3>
+                <p>Découvrez les offres d'emploi et de stages adaptées aux étudiants et diplômés de l'université.</p>
+            </div>
+            <p>Pour toute question supplémentaire, n'hésitez pas à nous contacter!</p>
+        </div>
+    </div>
+
+    <!-- WhatsApp Popup -->
+    <div class="whatsapp-popup" id="whatsappPopup">
+        <div class="whatsapp-popup-content">
+            <div class="popup-close" id="closeWhatsappPopup">&times;</div>
+            <div class="popup-header">
+                <h2><i class="fab fa-whatsapp"></i> Ne manquez aucune opportunité!</h2>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <p>Rejoignez notre communauté WhatsApp pour être informé en temps réel des nouvelles bourses, résultats d'examens, offres d'emploi et opportunités exclusives pour les étudiants de l'Université de Parakou.</p>
+                <div class="popup-buttons">
+                    <a href="https://whatsapp.com/channel/0029Vb6pBeZ3mFYDHLjAxX03" class="popup-btn btn-subscribe" target="_blank">
+                        <i class="fab fa-whatsapp"></i> S'abonner maintenant
+                    </a>
+                    <a href="#" class="popup-btn btn-already" id="alreadySubscribed">
+                        Je suis déjà abonné
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript pour la fonctionnalité de base
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestionnaire pour le formulaire de newsletter
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input').value;
+                if (email) {
+                    alert(`Merci de vous être abonné avec l'adresse: ${email}`);
+                    this.reset();
+                } else {
+                    alert('Veuillez entrer une adresse email valide.');
+                }
+            });
+            
+            // Gestionnaire pour le modal "Comment ça marche"
+            const howItWorksBtn = document.getElementById('howItWorksBtn');
+            const howItWorksModal = document.getElementById('howItWorksModal');
+            const closeModal = document.getElementById('closeModal');
+            
+            howItWorksBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                howItWorksModal.style.display = 'flex';
+            });
+            
+            closeModal.addEventListener('click', function() {
+                howItWorksModal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === howItWorksModal) {
+                    howItWorksModal.style.display = 'none';
+                }
+            });
+            
+            // Gestionnaire pour le popup WhatsApp
+            const whatsappPopup = document.getElementById('whatsappPopup');
+            const closeWhatsappPopup = document.getElementById('closeWhatsappPopup');
+            const alreadySubscribed = document.getElementById('alreadySubscribed');
+            
+            // Afficher le popup après 5 secondes
+            setTimeout(function() {
+                whatsappPopup.style.display = 'flex';
+            }, 5000);
+            
+            closeWhatsappPopup.addEventListener('click', function() {
+                whatsappPopup.style.display = 'none';
+            });
+            
+            alreadySubscribed.addEventListener('click', function(e) {
+                e.preventDefault();
+                whatsappPopup.style.display = 'none';
+                alert('Merci de faire partie de notre communauté!');
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === whatsappPopup) {
+                    whatsappPopup.style.display = 'none';
+                }
+            });
+            
+            // Animation simple au défilement
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.feature-card, .scholarship-card');
+                
+                elements.forEach(element => {
+                    const position = element.getBoundingClientRect();
+                    
+                    // Si l'élément est visible à l'écran
+                    if(position.top < window.innerHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Initialisation des styles pour l'animation
+            const animatedElements = document.querySelectorAll('.feature-card, .scholarship-card');
+            animatedElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Déclenchement de l'animation au chargement et au défilement
+            window.addEventListener('load', animateOnScroll);
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+</html>

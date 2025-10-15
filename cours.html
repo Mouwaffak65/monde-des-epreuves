@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours - UPStudent Université de Parakou</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #25D366;
+            --up-color: #8e44ad;
+            --menu-color: #FFD700;
+            --menu-hover: #FFC400;
+            --filter-bg: #f8f9fa;
+            --price-color: #e74c3c;
+            --discount-color: #27ae60;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--up-color), var(--secondary-color));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        nav ul li a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s;
+            padding: 10px 15px;
+            border-radius: 6px;
+            background-color: var(--menu-color);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+            display: inline-block;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--menu-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Hero Section */
+        .courses-hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .courses-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .courses-hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .courses-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--up-color);
+            margin-bottom: 15px;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* Courses Section */
+        .courses-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto;
+        }
+        
+        .filters-section {
+            background-color: var(--filter-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .filter-header h3 {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            background-color: white;
+            color: var(--secondary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--up-color);
+            color: white;
+        }
+        
+        .search-box {
+            position: relative;
+            max-width: 400px;
+            margin-top: 15px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .course-image {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .course-card:hover .course-image img {
+            transform: scale(1.05);
+        }
+        
+        .course-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: white;
+            color: var(--up-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .course-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .course-description {
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .course-details {
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            display: flex;
+            margin-bottom: 8px;
+            align-items: center;
+        }
+        
+        .detail-icon {
+            width: 20px;
+            color: var(--up-color);
+            margin-right: 10px;
+        }
+        
+        .detail-text {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .course-faculty {
+            display: inline-block;
+            background-color: #e8f4fc;
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .downloads-count {
+            display: flex;
+            align-items: center;
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .downloads-icon {
+            color: var(--up-color);
+            margin-right: 8px;
+        }
+        
+        .course-pricing {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .course-price {
+            font-weight: 700;
+            color: var(--price-color);
+            font-size: 1.3rem;
+        }
+        
+        .course-old-price {
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .course-discount {
+            background-color: var(--discount-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .course-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .course-btn {
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        .btn-buy {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-buy:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon {
+            margin-right: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* University Banner */
+        .university-banner {
+            background-color: var(--up-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 500;
+        }
+        
+        /* Pop-up de notification */
+        .notification-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            max-width: 350px;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .notification-popup.show {
+            transform: translateX(0);
+        }
+        
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .notification-title {
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .notification-title i {
+            color: var(--success-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .close-notification {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .notification-content {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .notification-content a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .notification-content a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .courses-hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .courses-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul li a {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+            
+            .filter-options {
+                justify-content: center;
+            }
+            
+            .course-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .notification-popup {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- University Banner -->
+    <div class="university-banner">
+        Portail officiel des étudiants de l'Université de Parakou
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>UP<span>Student</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#" style="background-color: var(--accent-color); color: white;">Cours</a></li>
+                    <li><a href="epreuve.html">Épreuves</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="bourses.html">Bourses</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="courses-hero">
+        <div class="container courses-hero-content">
+            <h2>Cours Universitaires PDF</h2>
+            <p>Accédez à des ressources pédagogiques complètes au format PDF pour exceller dans vos études</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="container">
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="stat-number">156</div>
+                <div class="stat-text">Cours PDF disponibles</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="stat-number">12,458</div>
+                <div class="stat-text">Téléchargements total</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="stat-number">2,543</div>
+                <div class="stat-text">Étudiants satisfaits</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses Section -->
+    <section class="courses-section">
+        <div class="container">
+            <h2 class="section-title">Cours PDF Disponibles</h2>
+            
+            <!-- Filters -->
+            <div class="filters-section">
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">Tous les cours</button>
+                    <button class="filter-btn" data-filter="Anglais">Anglais</button>
+                    <button class="filter-btn" data-filter="Espagnol">Espagnol</button>
+                    <button class="filter-btn" data-filter="Sociologie">Sociologie</button>
+                    <button class="filter-btn" data-filter="Géographie">Géographie</button>
+                    <button class="filter-btn" data-filter="Droit">Droit</button>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" id="course-search" placeholder="Rechercher un cours...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            
+            <!-- Courses Grid -->
+            <div class="courses-grid">
+                <!-- Course 1 - Anglais -->
+                <div class="course-card" data-filiere="Anglais">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cours d'Anglais">
+                        <div class="course-type">Format PDF</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Grammaire Anglaise Avancée</h3>
+                        <p class="course-description">Cours complet de grammaire anglaise avancée avec exercices et corrigés inclus. PDF de 120 pages.</p>
+                        
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="detail-text">Niveau: Licence 2</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="detail-text">PDF - 120 pages - 8.2 Mo</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="detail-text">Exercices et corrigés inclus</div>
+                            </div>
+                        </div>
+                        
+                        <span class="course-faculty">Anglais</span>
+                        
+                        <div class="downloads-count">
+                            <i class="fas fa-download downloads-icon"></i>
+                            <span>1,245 téléchargements</span>
+                        </div>
+                        
+                        <div class="course-pricing">
+                            <div class="course-price">2,500 FCFA</div>
+                            <div class="course-old-price">3,500 FCFA</div>
+                            <div class="course-discount">-29%</div>
+                        </div>
+                        
+                        <div class="course-buttons">
+                            <a href="#" class="course-btn btn-buy">
+                                <i class="fas fa-shopping-cart btn-icon"></i> Acheter
+                            </a>
+                            <a href="#" class="course-btn btn-whatsapp">
+                                <i class="fab fa-whatsapp btn-icon"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 - Espagnol -->
+                <div class="course-card" data-filiere="Espagnol">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1611522135886-9387c4006e49?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cours d'Espagnol">
+                        <div class="course-type">Format PDF</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Espagnol pour Débutants</h3>
+                        <p class="course-description">Cours complet d'espagnol pour débutants avec vocabulaire, grammaire et exercices pratiques. PDF de 85 pages.</p>
+                        
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="detail-text">Niveau: Licence 1</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="detail-text">PDF - 85 pages - 5.7 Mo</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="detail-text">Vocabulaire et exercices inclus</div>
+                            </div>
+                        </div>
+                        
+                        <span class="course-faculty">Espagnol</span>
+                        
+                        <div class="downloads-count">
+                            <i class="fas fa-download downloads-icon"></i>
+                            <span>987 téléchargements</span>
+                        </div>
+                        
+                        <div class="course-pricing">
+                            <div class="course-price">2,000 FCFA</div>
+                            <div class="course-old-price">2,800 FCFA</div>
+                            <div class="course-discount">-29%</div>
+                        </div>
+                        
+                        <div class="course-buttons">
+                            <a href="#" class="course-btn btn-buy">
+                                <i class="fas fa-shopping-cart btn-icon"></i> Acheter
+                            </a>
+                            <a href="#" class="course-btn btn-whatsapp">
+                                <i class="fab fa-whatsapp btn-icon"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 - Sociologie -->
+                <div class="course-card" data-filiere="Sociologie">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1581093458799-ee4b1f016613?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cours de Sociologie">
+                        <div class="course-type">Format PDF</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Théories Sociologiques Modernes</h3>
+                        <p class="course-description">Cours approfondi sur les théories sociologiques contemporaines avec études de cas. PDF de 145 pages.</p>
+                        
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="detail-text">Niveau: Master 1</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="detail-text">PDF - 145 pages - 9.8 Mo</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="detail-text">Études de cas incluses</div>
+                            </div>
+                        </div>
+                        
+                        <span class="course-faculty">Sociologie</span>
+                        
+                        <div class="downloads-count">
+                            <i class="fas fa-download downloads-icon"></i>
+                            <span>1,532 téléchargements</span>
+                        </div>
+                        
+                        <div class="course-pricing">
+                            <div class="course-price">3,200 FCFA</div>
+                            <div class="course-old-price">4,500 FCFA</div>
+                            <div class="course-discount">-29%</div>
+                        </div>
+                        
+                        <div class="course-buttons">
+                            <a href="#" class="course-btn btn-buy">
+                                <i class="fas fa-shopping-cart btn-icon"></i> Acheter
+                            </a>
+                            <a href="#" class="course-btn btn-whatsapp">
+                                <i class="fab fa-whatsapp btn-icon"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 4 - Géographie -->
+                <div class="course-card" data-filiere="Géographie">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1587440872815-7376313725c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cours de Géographie">
+                        <div class="course-type">Format PDF</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Géographie Urbaine et Aménagement</h3>
+                        <p class="course-description">Cours complet sur la géographie urbaine et les techniques d'aménagement du territoire. PDF de 110 pages.</p>
+                        
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="detail-text">Niveau: Licence 3</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="detail-text">PDF - 110 pages - 7.5 Mo</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="detail-text">Cartes et schémas inclus</div>
+                            </div>
+                        </div>
+                        
+                        <span class="course-faculty">Géographie</span>
+                        
+                        <div class="downloads-count">
+                            <i class="fas fa-download downloads-icon"></i>
+                            <span>876 téléchargements</span>
+                        </div>
+                        
+                        <div class="course-pricing">
+                            <div class="course-price">2,800 FCFA</div>
+                            <div class="course-old-price">3,800 FCFA</div>
+                            <div class="course-discount">-26%</div>
+                        </div>
+                        
+                        <div class="course-buttons">
+                            <a href="#" class="course-btn btn-buy">
+                                <i class="fas fa-shopping-cart btn-icon"></i> Acheter
+                            </a>
+                            <a href="#" class="course-btn btn-whatsapp">
+                                <i class="fab fa-whatsapp btn-icon"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 5 - Droit -->
+                <div class="course-card" data-filiere="Droit">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cours de Droit">
+                        <div class="course-type">Format PDF</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Introduction au Droit des Affaires</h3>
+                        <p class="course-description">Cours fondamental sur le droit des affaires avec cas pratiques et jurisprudence. PDF de 130 pages.</p>
+                        
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="detail-text">Niveau: Licence 2</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="detail-text">PDF - 130 pages - 8.9 Mo</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="detail-text">Cas pratiques inclus</div>
+                            </div>
+                        </div>
+                        
+                        <span class="course-faculty">Droit</span>
+                        
+                        <div class="downloads-count">
+                            <i class="fas fa-download downloads-icon"></i>
+                            <span>2,134 téléchargements</span>
+                        </div>
+                        
+                        <div class="course-pricing">
+                            <div class="course-price">3,000 FCFA</div>
+                            <div class="course-old-price">4,200 FCFA</div>
+                            <div class="course-discount">-29%</div>
+                        </div>
+                        
+                        <div class="course-buttons">
+                            <a href="#" class="course-btn btn-buy">
+                                <i class="fas fa-shopping-cart btn-icon"></i> Acheter
+                            </a>
+                            <a href="#" class="course-btn btn-whatsapp">
+                                <i class="fab fa-whatsapp btn-icon"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional courses would follow the same pattern -->
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Notification Pop-up -->
+    <div class="notification-popup" id="notificationPopup">
+        <div class="notification-header">
+            <div class="notification-title">
+                <i class="fab fa-whatsapp"></i>
+                <span>Support Paiement</span>
+            </div>
+            <button class="close-notification" id="closeNotification">&times;</button>
+        </div>
+        <div class="notification-content">
+            <p>💡 <strong>En cas de problème de paiement</strong>, si vous ne recevez pas votre PDF après paiement, contactez-nous sur WhatsApp en nous envoyant l'ID de transaction.</p>
+            <p>Vous pouvez également acheter directement via WhatsApp en cliquant sur le bouton WhatsApp du produit.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>UPStudent</h3>
+                    <ul>
+                        <li><a href="#">À propos de nous</a></li>
+                        <li><a href="#">Notre mission</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="privacy.html">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ressources</h3>
+                    <ul>
+                        <li><a href="#">Cours en PDF</a></li>
+                        <li><a href="#">Annales d'examens</a></li>
+                        <li><a href="#">Bibliothèque numérique</a></li>
+                        <li><a href="#">Conseils d'étude</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Université de Parakou, Bénin</li>
+                        <li><i class="fas fa-phone"></i> +229 XX XX XX XX</li>
+                        <li><i class="fas fa-envelope"></i> contact@upstudent.bj</li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 UPStudent - Tous droits réservés
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fonctionnalité de filtrage
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const courseCards = document.querySelectorAll('.course-card');
+            const searchInput = document.getElementById('course-search');
+            
+            // Filtrer par filière
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Mettre à jour l'état actif des boutons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filtrer les cartes
+                    courseCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-filiere') === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Recherche
+            searchInput.addEventListener('input', function() {
+                const searchValue = this.value.toLowerCase();
+                
+                courseCards.forEach(card => {
+                    const title = card.querySelector('.course-title').textContent.toLowerCase();
+                    const description = card.querySelector('.course-description').textContent.toLowerCase();
+                    const faculty = card.querySelector('.course-faculty').textContent.toLowerCase();
+                    
+                    if (title.includes(searchValue) || description.includes(searchValue) || faculty.includes(searchValue)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Notification Pop-up
+            const notificationPopup = document.getElementById('notificationPopup');
+            const closeNotification = document.getElementById('closeNotification');
+            
+            // Afficher le pop-up après 3 secondes
+            setTimeout(function() {
+                notificationPopup.classList.add('show');
+            }, 3000);
+            
+            // Fermer le pop-up
+            closeNotification.addEventListener('click', function() {
+                notificationPopup.classList.remove('show');
+            });
+            
+            // Fermer le pop-up en cliquant à l'extérieur
+            document.addEventListener('click', function(event) {
+                if (!notificationPopup.contains(event.target) && notificationPopup.classList.contains('show')) {
+                    notificationPopup.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

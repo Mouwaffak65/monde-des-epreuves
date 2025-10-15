@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPStudent - Offres d'Emploi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --up-color: #8e44ad;
+            --jobs-color: #3498db;
+            --warning-color: #f39c12;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--up-color), var(--secondary-color));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        nav ul li a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s;
+            padding: 10px 15px;
+            border-radius: 6px;
+            background-color: #FFD700;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+            display: inline-block;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+        
+        nav ul li a:hover {
+            background-color: #FFC400;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Hero Section Jobs */
+        .jobs-hero {
+            background: linear-gradient(rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.9)), url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .jobs-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .jobs-hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 800;
+        }
+        
+        .jobs-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-weight: 500;
+        }
+        
+        /* Jobs Section */
+        .jobs-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--jobs-color);
+            margin: 10px auto;
+        }
+        
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .job-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .job-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .job-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--jobs-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .job-deadline {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .job-content {
+            padding: 25px;
+        }
+        
+        .job-content h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+        }
+        
+        .job-location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .job-location i {
+            margin-right: 10px;
+            color: var(--jobs-color);
+        }
+        
+        .job-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .job-alert {
+            background-color: #ffeeee;
+            border-left: 4px solid var(--accent-color);
+            padding: 12px 15px;
+            margin: 20px 0;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            color: #d35400;
+        }
+        
+        .job-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .job-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-criteria {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-criteria:hover {
+            background-color: #1e2a36;
+        }
+        
+        .btn-apply {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-apply:hover {
+            background-color: #27ae60;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-content h2 {
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-content p {
+            margin-bottom: 30px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* University Banner */
+        .university-banner {
+            background-color: var(--up-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 500;
+        }
+        
+        /* Popup Style */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .popup-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s ease;
+            position: relative;
+        }
+        
+        .popup-header {
+            background: linear-gradient(to right, var(--jobs-color), #2980b9);
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+        
+        .popup-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .popup-body {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .popup-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background-color: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--jobs-color);
+            border: 4px solid var(--jobs-color);
+        }
+        
+        .popup-body p {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .popup-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .popup-btn {
+            padding: 14px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 180px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .btn-contact {
+            background-color: var(--jobs-color);
+            color: white;
+            border: 2px solid var(--jobs-color);
+        }
+        
+        .btn-contact:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+        }
+        
+        .btn-no {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+        
+        .btn-no:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .jobs-hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .jobs-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .job-buttons {
+                flex-direction: column;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 12px;
+            }
+            
+            .popup-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .popup-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- University Banner -->
+    <div class="university-banner">
+        Portail officiel des étudiants de l'Université de Parakou
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>UP<span>Student</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="cours.html">Cours</a></li>
+                    <li><a href="epreuve.html">Épreuves</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="bourses.html">Bourses</a></li>
+                    <li><a href="jobs.html" style="background-color: var(--jobs-color); color: white;">Jobs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="jobs-hero">
+        <div class="container jobs-hero-content">
+            <h2>Opportunités d'Emploi pour Étudiants</h2>
+            <p>Découvrez des offres d'emploi et de stage adaptées à votre profil universitaire</p>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section class="jobs-section">
+        <div class="container">
+            <h2 class="section-title">Offres d'Emploi Disponibles</h2>
+            <div class="jobs-grid">
+                <!-- Job 1 -->
+                <div class="job-card">
+                    <div class="job-img" style="background-image: url('https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <div class="job-badge">Temps partiel</div>
+                        <div class="job-deadline">15 Oct. 2023</div>
+                    </div>
+                    <div class="job-content">
+                        <h3>Développeur Web Frontend</h3>
+                        <div class="job-location">
+                            <i class="fas fa-map-marker-alt"></i> Parakou, Bénin
+                        </div>
+                        <div class="job-description">
+                            Nous recherchons un développeur web frontend pour rejoindre notre équipe. HTML, CSS et JavaScript requis.
+                        </div>
+                        <div class="job-alert">
+                            <i class="fas fa-exclamation-circle"></i> Téléchargez et lisez attentivement les critères avant de postuler
+                        </div>
+                        <div class="job-buttons">
+                            <a href="#" class="job-btn btn-criteria">
+                                <i class="fas fa-download"></i> Critères
+                            </a>
+                            <a href="#" class="job-btn btn-apply">
+                                <i class="fas fa-paper-plane"></i> Postuler
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 2 -->
+                <div class="job-card">
+                    <div class="job-img" style="background-image: url('https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <div class="job-badge">Stage</div>
+                        <div class="job-deadline">22 Oct. 2023</div>
+                    </div>
+                    <div class="job-content">
+                        <h3>Assistant Marketing Digital</h3>
+                        <div class="job-location">
+                            <i class="fas fa-map-marker-alt"></i> Cotonou, Bénin
+                        </div>
+                        <div class="job-description">
+                            Stage passionnant en marketing digital. Aide à la gestion des réseaux sociaux et campagnes publicitaires.
+                        </div>
+                        <div class="job-alert">
+                            <i class="fas fa-exclamation-circle"></i> Téléchargez et lisez attentivement les critères avant de postuler
+                        </div>
+                        <div class="job-buttons">
+                            <a href="#" class="job-btn btn-criteria">
+                                <i class="fas fa-download"></i> Critères
+                            </a>
+                            <a href="#" class="job-btn btn-apply">
+                                <i class="fas fa-paper-plane"></i> Postuler
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 3 -->
+                <div class="job-card">
+                    <div class="job-img" style="background-image: url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <div class="job-badge">Temps plein</div>
+                        <div class="job-deadline">30 Oct. 2023</div>
+                    </div>
+                    <div class="job-content">
+                        <h3>Data Analyst Junior</h3>
+                        <div class="job-location">
+                            <i class="fas fa-map-marker-alt"></i> Porto-Novo, Bénin
+                        </div>
+                        <div class="job-description">
+                            Poste de data analyst junior pour analyser les données clients et produire des rapports insights.
+                        </div>
+                        <div class="job-alert">
+                            <i class="fas fa-exclamation-circle"></i> Téléchargez et lisez attentivement les critères avant de postuler
+                        </div>
+                        <div class="job-buttons">
+                            <a href="#" class="job-btn btn-criteria">
+                                <i class="fas fa-download"></i> Critères
+                            </a>
+                            <a href="#" class="job-btn btn-apply">
+                                <i class="fas fa-paper-plane"></i> Postuler
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 4 -->
+                <div class="job-card">
+                    <div class="job-img" style="background-image: url('https://images.unsplash.com/photo-1577375729152-4c8b5fcda381?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <div class="job-badge">Freelance</div>
+                        <div class="job-deadline">10 Nov. 2023</div>
+                    </div>
+                    <div class="job-content">
+                        <h3>Rédacteur de Contenu</h3>
+                        <div class="job-location">
+                            <i class="fas fa-map-marker-alt"></i> Remote
+                        </div>
+                        <div class="job-description">
+                            Recherche de rédacteurs de contenu pour articles de blog. Excellente maîtrise du français requise.
+                        </div>
+                        <div class="job-alert">
+                            <i class="fas fa-exclamation-circle"></i> Téléchargez et lisez attentivement les critères avant de postuler
+                        </div>
+                        <div class="job-buttons">
+                            <a href="#" class="job-btn btn-criteria">
+                                <i class="fas fa-download"></i> Critères
+                            </a>
+                            <a href="#" class="job-btn btn-apply">
+                                <i class="fas fa-paper-plane"></i> Postuler
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 5 -->
+                <div class="job-card">
+                    <div class="job-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <div class="job-badge">Temps partiel</div>
+                        <div class="job-deadline">5 Nov. 2023</div>
+                    </div>
+                    <div class="job-content">
+                        <h3>Assistant Comptable</h3>
+                        <div class="job-location">
+                            <i class="fas fa-map-marker-alt"></i> Parakou, Bénin
+                        </div>
+                        <div class="job-description">
+                            Poste d'assistant comptable dans un cabinet réputé. Formation en comptabilité requise.
+                        </div>
+                        <div class="job-alert">
+                            <i class="fas fa-exclamation-circle"></i> Téléchargez et lisez attentivement les critères avant de postuler
+                        </div>
+                        <div class="job-buttons">
+                            <a href="#" class="job-btn btn-criteria">
+                                <i class="fas fa-download"></i> Critères
+                            </a>
+                            <a href="#" class="job-btn btn-apply">
+                                <i class="fas fa-paper-plane"></i> Postuler
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 6 -->
+                <div class="job-card">
+                    <div class="job-img" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <div class="job-badge">Stage</div>
+                        <div class="job-deadline">18 Nov. 2023</div>
+                    </div>
+                    <div class="job-content">
+                        <h3>Community Manager</h3>
+                        <div class="job-location">
+                            <i class="fas fa-map-marker-alt"></i> Cotonou, Bénin
+                        </div>
+                        <div class="job-description">
+                            Stage en tant que community manager pour gérer nos réseaux sociaux et interagir avec notre communauté.
+                        </div>
+                        <div class="job-alert">
+                            <i class="fas fa-exclamation-circle"></i> Téléchargez et lisez attentivement les critères avant de postuler
+                        </div>
+                        <div class="job-buttons">
+                            <a href="#" class="job-btn btn-criteria">
+                                <i class="fas fa-download"></i> Critères
+                            </a>
+                            <a href="#" class="job-btn btn-apply">
+                                <i class="fas fa-paper-plane"></i> Postuler
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Ne manquez aucune opportunité</h2>
+                <p>Inscrivez-vous à notre newsletter pour recevoir les dernières offres d'emploi et de stage.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre adresse email" required>
+                    <button type="submit">S'abonner</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>UPStudent</h3>
+                    <p>Portail officiel des ressources académiques de l'Université de Parakou.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="cours.html">Cours</a></li>
+                        <li><a href="epreuve.html">Épreuves</a></li>
+                        <li><a href="resultats.html">Résultats</a></li>
+                        <li><a href="bourses.html">Bourses</a></li>
+                        <li><a href="jobs.html">Jobs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ressources</h3>
+                    <ul>
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="privacy.html">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@upstudent-up.com</li>
+                        <li><i class="fas fa-phone"></i> +229 65 65 58 10</li>
+                        <li><i class="fas fa-map-marker-alt"></i> UPStudent, Bénin</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 UPStudent - Ibnhoud. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="jobsPopup">
+        <div class="popup-content">
+            <div class="popup-close" id="closePopup">&times;</div>
+            <div class="popup-header">
+                <h2><i class="fas fa-briefcase"></i> Vous cherchez à publier une offre?</h2>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <p>Vous êtes employeur et souhaitez publier une offre d'emploi ou de stage sur UPStudent? Contactez-nous pour plus d'informations sur nos services de publication.</p>
+                <div class="popup-buttons">
+                    <a href="mailto:emploi@upstudent-up.com" class="popup-btn btn-contact">
+                        <i class="fas fa-envelope"></i> Nous contacter
+                    </a>
+                    <a href="#" class="popup-btn btn-no" id="closePopupBtn">
+                        Non, je ne veux pas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const jobsPopup = document.getElementById('jobsPopup');
+            const closePopup = document.getElementById('closePopup');
+            const closePopupBtn = document.getElementById('closePopupBtn');
+            
+            // Afficher le popup après 10 secondes
+            setTimeout(function() {
+                jobsPopup.style.display = 'flex';
+            }, 10000);
+            
+            // Fermer le popup
+            closePopup.addEventListener('click', function() {
+                jobsPopup.style.display = 'none';
+            });
+            
+            closePopupBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                jobsPopup.style.display = 'none';
+            });
+            
+            // Fermer le popup en cliquant à l'extérieur
+            window.addEventListener('click', function(e) {
+                if (e.target === jobsPopup) {
+                    jobsPopup.style.display = 'none';
+                }
+            });
+            
+            // Gestionnaire pour le formulaire de newsletter
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input').value;
+                if (email) {
+                    alert(`Merci de vous être abonné avec l'adresse: ${email}`);
+                    this.reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
